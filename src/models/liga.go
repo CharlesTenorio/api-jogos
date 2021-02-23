@@ -1,7 +1,7 @@
 package models
 
 type Liga struct {
-	Id              int
+	Id              uint64
 	Nome            string
 	Cc              string
 	Has_leaguetable string

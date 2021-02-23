@@ -11,4 +11,12 @@ var rotasTime = []Rota{
 	  },
 	  RequerAutenticacao:false,
 
+	  {
+		URI: "/times/{timeID}",
+		Metodo: http.MethodGet,
+		Funcao: func(w http.ResponseWriter, r *http.Request){
+  
+		},
+		RequerAutenticacao:false,
+
 },

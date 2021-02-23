@@ -7,5 +7,5 @@ type Time struct {
 	Nome    string
 	Cc      string
 	ImageId int
-	DataCad time.Timer
+	DataCad time.Time
 }
