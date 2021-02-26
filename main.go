@@ -9,9 +9,9 @@ import (
 )
 
 func main() {
+
 	config.CarregarConfig()
-	fmt.Print(config.Porta)
-	fmt.Print(config.StringConexaoBanco)
+
 	fmt.Println("servidor rodando")
 	r := router.Gerar()
 

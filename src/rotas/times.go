@@ -1,22 +1,32 @@
 package rotas
 
-import "net/http"
+import (
+	"api/src/controllers"
+	"net/http"
+)
 
 var rotasTime = []Rota{
 	{
 	  URI: "/times",
 	  Metodo: http.MethodGet,
-	  Funcao: func(w http.ResponseWriter, r *http.Request){
-
-	  },
+	  Funcao: controllers.ListaTodosTimes,
 	  RequerAutenticacao:false,
+	},
 
 	  {
 		URI: "/times/{timeID}",
 		Metodo: http.MethodGet,
-		Funcao: func(w http.ResponseWriter, r *http.Request){
-  
-		},
+		Funcao: controllers.ListaTtime,
 		RequerAutenticacao:false,
+	  },
+	  
+	  {
+			URI: "/time/",
+			Metodo: http.MethodPost,
+			Funcao: controllers.CriarTime,
+			RequerAutenticacao:false,
+	  },
+	  
+	  
 
 },
