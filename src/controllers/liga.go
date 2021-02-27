@@ -4,10 +4,9 @@ import (
 	"api/src/banco"
 	"api/src/models"
 	"api/src/repository"
+	"api/src/respostas"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -23,26 +22,32 @@ func ListaLiga(w http.ResponseWriter, r *http.Request) {
 func CriarLiga(w http.ResponseWriter, r *http.Request) {
 	corpoRequest, erro := ioutil.ReadAll(r.Body)
 	if erro != nil {
-		log.Fatal(erro)
+		respostas.Error(w, http.StatusUnprocessableEntity, erro)
+		return
+
 	}
 	var liga models.Liga
 	if erro = json.Unmarshal(corpoRequest, &liga); erro != nil {
-		log.Fatal(erro)
+		respostas.Error(w, http.StatusBadRequest, erro)
+		return
 	}
 
 	db, erro := banco.Conectar()
 	if erro != nil {
-		log.Fatal(erro)
+		respostas.Error(w, http.StatusInternalServerError, erro)
+		return
 	}
+	defer db.Close()
 
 	repositorio := repository.NovoRepoLiga(db)
 
-	ligaID, erro := repositorio.CriarLiga(liga)
+	liga.Id, erro = repositorio.CriarLiga(liga)
 	if erro != nil {
-		log.Fatal(erro)
+		respostas.Error(w, http.StatusUnprocessableEntity, erro)
+		return
 	}
 
-	w.Write([]byte(fmt.Sprintf("Id inserido: %d", ligaID)))
+	respostas.JSON(w, http.StatusCreated, liga)
 
 }
 

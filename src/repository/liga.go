@@ -16,7 +16,7 @@ func NovoRepoLiga(db *sql.DB) *liga {
 
 func (repoliga liga) CriarLiga(liga models.Liga) (uint64, error) {
 
-	statment, erro := repoliga.db.Prepare("INSERT INTO liga (id, nome, cc, has_toplist, has_leaguetable) VALUES(?, ?, ?, ?, ?)")
+	statment, erro := repoliga.db.Prepare("INSERT INTO liga (id, nome, cc, has_toplist, has_leaguetable) VALUES($1, $2, $3, $4, $5)")
 	if erro != nil {
 		return 0, erro
 	}
