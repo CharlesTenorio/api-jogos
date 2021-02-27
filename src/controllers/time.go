@@ -45,3 +45,12 @@ func CriarTime(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(fmt.Sprintf("Id inserido: %d", timeID)))
 
 }
+
+func AutalizarTimes(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("atualizar os times"))
+}
+
+func Deletartime(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Deletar busca time"))
+
+}

@@ -15,6 +15,6 @@ func main() {
 	fmt.Println("servidor rodando")
 	r := router.Gerar()
 
-	log.Fatal(http.ListenAndServe(":50000", r))
+	log.Fatal(http.ListenAndServe(":5000", r))
 
 }

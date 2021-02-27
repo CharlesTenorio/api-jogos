@@ -35,8 +35,8 @@ func CarregarConfig() {
 	}
 
 	if Dev == true {
-		StringConexaoBanco = fmt.Sprintf("host=%s port=%s user=%s "+"password=%s dbname=%s sslmode=disable", os.Getenv("PGHOST_LOCAL"), os.Getenv("PGPORT"),
-			os.Getenv("PGUSER_LOCAL"), os.Getenv("PASSWORD_DB_LOCAL"), os.Getenv("PGDATABASE_LOCAL"))
+		StringConexaoBanco = fmt.Sprintf("host=%s port=%s user=%s "+"password=%s dbname=%s sslmode=disable", "localhost", "5432",
+			"postgres", "linux123", "apostadb")
 
 	} else {
 		StringConexaoBanco = fmt.Sprintf("host=%s port=%s user=%s "+"password=%s dbname=%s sslmode=disable", os.Getenv("PGHOST"), os.Getenv("PGPORT"),
